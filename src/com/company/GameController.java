@@ -14,19 +14,19 @@ public class GameController implements KeyListener {
         int  key = e.getKeyCode();
 
         if (key ==  KeyEvent.VK_UP){
-            true == up;
+            up = true;
         }
         if (key == KeyEvent.VK_DOWN){
-            down == true;
+            down = true;
         }
         if (key == KeyEvent.VK_LEFT){
-            left == true;
+            left = true;
         }
         if (key == KeyEvent.VK_RIGHT){
-            right == true;
+            right = true;
         }
         if (key == KeyEvent.VK_Z){//extra key for actions
-            action_1 == true;
+            action_1 = true;
         }
     }
 
@@ -40,19 +40,19 @@ public class GameController implements KeyListener {
         int  key = e.getKeyCode();
 
         if (key ==  KeyEvent.VK_UP){
-            up == false;
+            up = false;
         }
         if (key == KeyEvent.VK_DOWN){
-            down == false;
+            down = false;
         }
         if (key == KeyEvent.VK_LEFT){
-            left == false;
+            left = false;
         }
         if (key == KeyEvent.VK_RIGHT){
-            right == false;
+            right = false;
         }
         if (key == KeyEvent.VK_Z){
-            action_1 == false;
+            action_1 = false;
         }
     }
 }
