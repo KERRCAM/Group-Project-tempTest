@@ -3,8 +3,8 @@ import javax.swing.JFrame;
 
 public class Interface extends JFrame{
     public Interface(){
-        setSize(600,800);
-        setTitle("Test");
+        setSize(1600,800);
+        setTitle("game screen");
         setVisible(true);
     }
 }
