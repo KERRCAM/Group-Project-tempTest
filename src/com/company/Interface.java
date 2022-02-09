@@ -6,5 +6,6 @@ public class Interface extends JFrame{
         setSize(1600,800); // sets screen values
         setTitle("game screen");
         setVisible(true);
+        setResizable(false);
     }
 }
