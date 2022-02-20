@@ -1,23 +1,14 @@
 package com.company;
+import javax.swing.*;
+import java.awt.*;
+import javax.imageio.*;
+import java.io.File;
+import java.io.IOException;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JPanel;
-
-public class screen extends JPanel{
-
-    private int width;
-    private int height;
-
-    public screen() {
-        super();
-        width = 500;
-        height = 500;
+public class Screen extends JFrame{
+    Screen(){
+        this.setTitle("Maze");
+        this.setResizable(false);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-
-
-
-
 }
