@@ -44,17 +44,24 @@ public class Panel extends JPanel implements Runnable{
         }
     }
     public void update(){
+        positionY+=1;
         if(listener.up){
             positionY-=3;
         }
-        else if(listener.down){
-            positionY+=3;
-        }
-        else if(listener.right){
+        //if(listener.down){
+        //    positionY+=3;
+        //}
+        if(listener.right){
             positionX+=3;
         }
-        else if(listener.left){
+        if(listener.left){
             positionX-=3;
+        }
+        if(listener.boostRight){
+            positionX+=10;
+        }
+        if(listener.boostLeft){
+            positionX-=10;
         }
         if (positionX>width-tileSize){
             positionX=width-tileSize;
