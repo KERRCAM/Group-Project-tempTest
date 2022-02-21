@@ -1,25 +1,16 @@
 package com.company;
-
-import javax.swing.JFrame;
-
+import javax.swing.*;
+import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        //Interface Interface=new Interface(); // makes screen
-
-
-        JFrame window = new JFrame();
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setResizable(true); // for testing only (true)
-        window.setTitle("game");
-
-        screen screen = new screen();
-        window.add(screen);
-
-        window.setLocationRelativeTo(null);
-        window.setVisible(true);
-
-        screen.startGameThread();
+        Screen gameScreen= new Screen();
+        Panel gamePanel=new Panel();
+        gameScreen.add(gamePanel);
+        gameScreen.pack();
+        gameScreen.setLocationRelativeTo(null);
+        gameScreen.setVisible(true);
+        gamePanel.StartThread();
 
     }
 }
