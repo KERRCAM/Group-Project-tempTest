@@ -56,13 +56,13 @@ public class Panel extends JPanel implements Runnable{
         else if(listener.left){
             positionX-=3;
         }
-        if (positionX>width){
-            positionX=width;
+        if (positionX>width-tileSize){
+            positionX=width-tileSize;
         }if (positionX<0){
             positionX=0;
         }
-        if (positionY>height){
-            positionY=height;
+        if (positionY>height-tileSize){
+            positionY=height-tileSize;
         }
         if (positionY<0){
             positionY=0;
