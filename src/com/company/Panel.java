@@ -56,6 +56,18 @@ public class Panel extends JPanel implements Runnable{
         else if(listener.left){
             positionX-=3;
         }
+        if (positionX>width){
+            positionX=width;
+        }if (positionX<0){
+            positionX=0;
+        }
+        if (positionY>height){
+            positionY=height;
+        }
+        if (positionY<0){
+            positionY=0;
+        }
+
 
     }
     public void paintComponent(Graphics g){
