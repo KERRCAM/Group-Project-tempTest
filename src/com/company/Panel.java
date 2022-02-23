@@ -6,7 +6,7 @@ import java.awt.*;
 public class Panel extends JPanel implements Runnable{
     final int characterSize=16;
     final int characterScaling=3;
-    final int tileSize=characterSize*characterScaling;
+    public final int tileSize=characterSize*characterScaling;
     final int width=16*tileSize;
     final int height=12*tileSize;
     int positionX=width/2;
