@@ -1,5 +1,7 @@
 package com.company;
 
+import entity.Player;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,7 +13,7 @@ public class Panel extends JPanel implements Runnable{
     final int height=12*tileSize;
     int positionX=width/2;
     int positionY=height/2;
-    Input listener= new Input();
+
     public Panel(){
         this.setPreferredSize(new Dimension(width,height));
         this.setBackground(new Color(70,165,79));
@@ -20,7 +22,11 @@ public class Panel extends JPanel implements Runnable{
         this.setFocusable(true);
 
     }
+
+    Input listener= new Input();
+    Player player = new Player(this,listener);
     Thread gameThread;
+
     public void StartThread(){
         gameThread=new Thread(this);
         gameThread.start();
@@ -44,44 +50,12 @@ public class Panel extends JPanel implements Runnable{
         }
     }
     public void update(){
-        positionY+=1;
-        if(listener.up){
-            positionY-=3;
-        }
-        //if(listener.down){
-        //    positionY+=3;
-        //}
-        if(listener.right){
-            positionX+=3;
-        }
-        if(listener.left){
-            positionX-=3;
-        }
-        if(listener.boostRight){
-            positionX+=10;
-        }
-        if(listener.boostLeft){
-            positionX-=10;
-        }
-        if (positionX>width-tileSize){
-            positionX=width-tileSize;
-        }if (positionX<0){
-            positionX=0;
-        }
-        if (positionY>height-tileSize){
-            positionY=height-tileSize;
-        }
-        if (positionY<0){
-            positionY=0;
-        }
-
-
+        player.update();
     }
-    public void paintComponent(Graphics g){
-            super.paintComponent(g);
-            Graphics2D g2D = (Graphics2D) g;
-            g2D.setColor(Color.black);
-            g2D.fillRect(positionX, positionY, 48, 48);
+    public void paintComponent(Graphics g2){
+            super.paintComponent(g2);
+            Graphics2D g2D = (Graphics2D) g2;
+            player.draw((Graphics2D) g2);
             g2D.dispose();
 
     }
