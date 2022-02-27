@@ -25,7 +25,7 @@ public class Player extends Entity{
         x = 100;
         y = 100;
         speed = 4;
-        direction="down";
+        direction="none";
     }
     public void getPlayerImage(){
         try{
@@ -54,15 +54,19 @@ public class Player extends Entity{
         if(keyH.up == true || keyH.down == true || keyH.left == true || keyH.right == true){
             if(keyH.up){
                 direction = "up";
+                lastDirection="up";
                 y -= speed;
             }else if (keyH.down){
                 direction = "down";
+                lastDirection="down";
                 y += speed;
             }else if(keyH.left){
                 direction = "left";
+                lastDirection="left";
                 x -= speed;
             }else if (keyH.right){
                 direction = "right";
+                lastDirection="right";
                 x += speed;
             }
 
@@ -79,6 +83,9 @@ public class Player extends Entity{
                 }
                 spriteCounter = 0;
             }
+        }else{
+            System.out.println(lastDirection);
+            direction="none";
         }
     }
     public void draw(Graphics2D g){
@@ -142,6 +149,21 @@ public class Player extends Entity{
                     image = right4;
                 }
                 break;
+            case"none":
+                switch(lastDirection){
+                    case"up":
+                        image=up1;
+                        break;
+                    case"down":
+                        image=down1;
+                        break;
+                    case"right":
+                        image=right1;
+                        break;
+                    case"left":
+                        image=left1;
+                        break;
+                }
         }
         g.drawImage(image, x, y,gp.tileSize,gp.tileSize, null);
 
