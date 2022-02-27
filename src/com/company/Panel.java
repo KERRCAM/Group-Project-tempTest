@@ -1,5 +1,6 @@
 package com.company;
 
+import Tiles.TileManager;
 import entity.Player;
 
 import javax.swing.*;
@@ -11,18 +12,15 @@ public class Panel extends JPanel implements Runnable{
     public final int tileSize=characterSize*characterScaling;
     final int width=16*tileSize;
     final int height=12*tileSize;
-    int positionX=width/2;
-    int positionY=height/2;
 
     public Panel(){
         this.setPreferredSize(new Dimension(width,height));
-        this.setBackground(new Color(70,165,79));
         this.setDoubleBuffered(true);
         this.addKeyListener(listener);
         this.setFocusable(true);
 
     }
-
+    TileManager tileManager=new TileManager(this);
     Input listener= new Input();
     Player player = new Player(this,listener);
     Thread gameThread;
@@ -55,6 +53,7 @@ public class Panel extends JPanel implements Runnable{
     public void paintComponent(Graphics g2){
             super.paintComponent(g2);
             Graphics2D g2D = (Graphics2D) g2;
+            tileManager.draw(g2D);
             player.draw((Graphics2D) g2);
             g2D.dispose();
 

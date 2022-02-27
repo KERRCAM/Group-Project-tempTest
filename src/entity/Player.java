@@ -84,7 +84,6 @@ public class Player extends Entity{
                 spriteCounter = 0;
             }
         }else{
-            System.out.println(lastDirection);
             direction="none";
         }
     }
