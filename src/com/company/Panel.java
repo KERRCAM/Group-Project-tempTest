@@ -20,7 +20,7 @@ public class Panel extends JPanel implements Runnable{
         this.setFocusable(true);
 
     }
-    //TileManager tileManager=new TileManager(this);
+    TileManager tileManager=new TileManager(this);
     Input listener= new Input();
     Player player = new Player(this,listener);
     Thread gameThread;
@@ -64,7 +64,7 @@ public class Panel extends JPanel implements Runnable{
     public void paintComponent(Graphics g2){
             super.paintComponent(g2);
             Graphics2D g2D = (Graphics2D) g2;
-    //        tileManager.draw(g2D);
+            tileManager.draw(g2D);
             player.draw((Graphics2D) g2);
             g2D.dispose();
 
