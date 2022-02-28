@@ -31,9 +31,9 @@ public class Player extends Entity{
     }
 
     public double timeFalling(){
-        airTime = airTime + 0.001;
-        if (airTime > 1) {
-            airTime = 1;
+        airTime = airTime + 0.004;
+        if (airTime > 1.6) {
+            airTime = 1.6;
         }
         return (airTime);
     }
