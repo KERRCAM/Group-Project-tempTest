@@ -1,3 +1,4 @@
+
 package Tiles;
 
 import com.company.Panel;
@@ -18,10 +19,11 @@ public class TileManager {
     public void getTileImage(){
         try{
             tile[0]=new Tile();
-            tile[0].image=ImageIO.read(getClass().getResourceAsStream("/tileImages/grass.png"));
-
+            tile[0].image=ImageIO.read(getClass().getResourceAsStream("/TerrainTiles/terrain_platform_center.png"));
             tile[1]=new Tile();
-            tile[1].image=ImageIO.read(getClass().getResourceAsStream("/tileImages/wall.png"));
+            tile[1].image=ImageIO.read(getClass().getResourceAsStream("/TerrainTiles/terrain_platform_left.png"));
+            tile[2] = new Tile();
+            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/TerrainTiles/terrain_platform_right.png"));
 
 
 
@@ -33,10 +35,11 @@ public class TileManager {
         }
     }
     public void draw(Graphics2D g2D){
-        for (int i = 0; i < gamePanel.getWidth(); i+=gamePanel.tileSize) {
-            for (int j = 0; j < gamePanel.getHeight(); j++){
-                g2D.drawImage(tile[0].image,i,j,gamePanel.tileSize, gamePanel.tileSize,null);
-            }
-        }
+        int screenCenterX = gamePanel.getWidth()/2- gamePanel.tileSize/2;
+        int screenCenterY = gamePanel.getHeight()/2-gamePanel.tileSize/2;
+
+        g2D.drawImage(tile[0].image,screenCenterX,screenCenterY,gamePanel.tileSize, gamePanel.tileSize,null);
+        g2D.drawImage(tile[1].image,screenCenterX- gamePanel.tileSize,screenCenterY,gamePanel.tileSize, gamePanel.tileSize,null);
+        g2D.drawImage(tile[2].image,screenCenterX + gamePanel.tileSize,screenCenterY,gamePanel.tileSize, gamePanel.tileSize,null);
     }
 }
