@@ -24,9 +24,20 @@ public class Player extends Entity{
 
         x = 100;
         y = 100;
-        speed = 4;
+        speedY = 4;
+        speedX = 4;
+        airTime = 0;
         direction="none";
     }
+
+    public double timeFalling(){
+        airTime = airTime + 0.001;
+        if (airTime > 1) {
+            airTime = 1;
+        }
+        return (airTime);
+    }
+
     public void getPlayerImage(){
         try{
             up1 = ImageIO.read(getClass().getResource("/gameImages/player_up1.png"));
@@ -50,24 +61,24 @@ public class Player extends Entity{
         }
     }
     public void update(){
-
+        y += speedY*timeFalling();
         if(keyH.up == true || keyH.down == true || keyH.left == true || keyH.right == true){
             if(keyH.up){
                 direction = "up";
                 lastDirection="up";
-                y -= speed;
+                y -= 10;
             }else if (keyH.down){
                 direction = "down";
                 lastDirection="down";
-                y += speed;
+                y += speedY;
             }else if(keyH.left){
                 direction = "left";
                 lastDirection="left";
-                x -= speed;
+                x -= speedX;
             }else if (keyH.right){
                 direction = "right";
                 lastDirection="right";
-                x += speed;
+                x += speedX;
             }
 
             spriteCounter++;
