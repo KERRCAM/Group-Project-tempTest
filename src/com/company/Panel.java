@@ -31,20 +31,31 @@ public class Panel extends JPanel implements Runnable{
     }
     @Override
     public void run() {
-        double frameInterval=1000000000/60;
-        double nextFrame=System.nanoTime()+frameInterval;
-        while(gameThread!=null) {
-            update();
-            repaint();
-            double remainingTime=nextFrame-System.nanoTime();
-            if(remainingTime<0){
-                remainingTime=0;
-            }try{
-            Thread.sleep((long) remainingTime/1000000);}
-            catch(Exception e){
-                System.out.println("Error: "+e);
+        double drawInterval = 1000000000/60;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
+        long timer =0;
+        int drawCount = 0;
+
+        while (gameThread!= null){
+
+            currentTime = System.nanoTime();
+            timer += (currentTime - lastTime);
+            delta += (currentTime - lastTime)/drawInterval;
+            lastTime = currentTime;
+            if (delta >= 1) {
+
+                update();
+                repaint();
+                delta--;
+                drawCount++;
             }
-            nextFrame+=frameInterval;
+            if (timer >= 1000000000){
+                //System.out.println("FPS:"+ drawCount);
+                drawCount = 0;
+                timer = 0;
+            }
         }
     }
     public void update(){
