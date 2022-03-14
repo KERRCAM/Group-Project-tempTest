@@ -11,6 +11,5 @@ public class Main {
         gameScreen.setLocationRelativeTo(null);
         gameScreen.setVisible(true);
         gamePanel.StartThread();
-
     }
 }

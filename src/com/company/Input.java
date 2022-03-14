@@ -8,6 +8,8 @@ public class Input implements KeyListener {
     public boolean down;
     public boolean right;
     public boolean left;
+    public boolean boostRight;
+    public boolean boostLeft;
     @Override
     public void keyTyped(KeyEvent e) {
     }
@@ -27,7 +29,12 @@ public class Input implements KeyListener {
         if(code==KeyEvent.VK_D){
             right=true;
         }
-
+        if(code==KeyEvent.VK_E){
+            boostRight=true;
+        }
+        if(code==KeyEvent.VK_Q){
+            boostLeft=true;
+        }
     }
 
     @Override
@@ -44,6 +51,12 @@ public class Input implements KeyListener {
         }
         if(code==KeyEvent.VK_D){
             right=false;
+        }
+        if(code==KeyEvent.VK_E){
+            boostRight=false;
+        }
+        if(code==KeyEvent.VK_Q){
+            boostLeft=false;
         }
     }
 }
