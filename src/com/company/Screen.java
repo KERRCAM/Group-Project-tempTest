@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class Screen extends JFrame{
     Screen(){
-        this.setTitle("Maze");
+        this.setTitle("world");
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

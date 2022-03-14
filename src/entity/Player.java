@@ -13,17 +13,29 @@ public class Player extends Entity{
     Panel gp;
     Input keyH;
 
+    public final int screenX;
+    public final int screenY;
+
     public Player(Panel gp, Input keyH){
         this.gp = gp;
         this.keyH = keyH;
+
+        screenX = gp.worldWidth/2;
+        screenY = gp.worldHeight/2;
+
+        solidArea = new Rectangle(8, 16, 32, 32);
+        //solidArea.x = 0;
+        //solidArea.y = 0;
+        //solidArea.width = 48;
+        //solidArea.height = 48; // values for collision of entire sprite box
 
         setDefaultValues();
         getPlayerImage();
     }
     public void setDefaultValues(){
 
-        x = 100;
-        y = 100;
+        worldX = gp.tileSize * 23;
+        worldY = gp.tileSize * 21;
         speedY = 4;
         speedX = 4;
         airTime = 0;
@@ -61,25 +73,28 @@ public class Player extends Entity{
         }
     }
     public void update(){
-        y += speedY*timeFalling();
+        worldY += speedY*timeFalling();
         if(keyH.up == true || keyH.down == true || keyH.left == true || keyH.right == true){
             if(keyH.up){
                 direction = "up";
                 lastDirection="up";
-                y -= 10;
+                worldY -= 10;
             }else if (keyH.down){
                 direction = "down";
                 lastDirection="down";
-                y += speedY;
+                worldY += speedY;
             }else if(keyH.left){
                 direction = "left";
                 lastDirection="left";
-                x -= speedX;
+                worldX -= speedX;
             }else if (keyH.right){
                 direction = "right";
                 lastDirection="right";
-                x += speedX;
+                worldX += speedX;
             }
+
+            collisionOn = false;
+            gp.cTest.checkTile(this);
 
             spriteCounter++;
             if(spriteCounter > 10){
@@ -175,7 +190,7 @@ public class Player extends Entity{
                         break;
                 }
         }
-        g.drawImage(image, x, y,gp.tileSize,gp.tileSize, null);
+        g.drawImage(image, screenX, screenY,gp.tileSize,gp.tileSize, null);
 
     }
 }

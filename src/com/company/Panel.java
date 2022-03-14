@@ -1,5 +1,6 @@
 package com.company;
 
+import Tiles.Tile;
 import Tiles.TileManager;
 import entity.Player;
 
@@ -7,26 +8,37 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Panel extends JPanel implements Runnable{
-    final int characterSize=16;
-    final int characterScaling=3;
-    public final int tileSize=characterSize*characterScaling;
-    final int width=16*tileSize;
-    final int height=12*tileSize;
+    final int characterSize = 16;
+    final int characterScaling = 3;
+    public final int tileSize = characterSize*characterScaling;
+    final int maxScreenCol = 50;
+    final int maxScreenRow = 50;
+    final int screenWidth = maxScreenCol * tileSize;
+    final int screenHeight = maxScreenRow * tileSize;
+
+    public final int maxWorldCol = 50;
+    public final int maxWorldRow = 50;
+    public final int worldWidth = tileSize * maxWorldCol;
+    public final int worldHeight = tileSize * maxWorldRow;
+
+
+
 
     public Panel(){
-        this.setPreferredSize(new Dimension(width,height));
+        this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         this.setDoubleBuffered(true);
         this.addKeyListener(listener);
         this.setFocusable(true);
 
     }
-    TileManager tileManager=new TileManager(this);
-    Input listener= new Input();
-    Player player = new Player(this,listener);
+    TileManager tileManager = new TileManager(this);
+    Input listener = new Input();
+    public Player player = new Player(this,listener);
     Thread gameThread;
+    public collisionTest cTest = new collisionTest(this);
 
     public void StartThread(){
-        gameThread=new Thread(this);
+        gameThread = new Thread(this);
         gameThread.start();
     }
     @Override
