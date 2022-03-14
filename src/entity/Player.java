@@ -20,8 +20,8 @@ public class Player extends Entity{
         this.gp = gp;
         this.keyH = keyH;
 
-        screenX = gp.worldWidth/2;
-        screenY = gp.worldHeight/2;
+        screenX = gp.worldWidth/4;
+        screenY = gp.worldHeight/4;
 
         solidArea = new Rectangle(8, 16, 32, 32);
         solidArea.x = 0;
@@ -79,22 +79,18 @@ public class Player extends Entity{
             if(keyH.up){
                 direction = "up";
                 //lastDirection="up";
-
                 //worldY -= 10;
             }else if (keyH.down){
                 direction = "down";
                 //lastDirection="down";
-
                 //worldY += speedY;
             }else if(keyH.left){
                 direction = "left";
                 //lastDirection="left";
-
                 //worldX -= speedX;
             }else if (keyH.right){
                 direction = "right";
                 //lastDirection="right";
-
                 //worldX += speedX;
             }
 
@@ -105,16 +101,20 @@ public class Player extends Entity{
             if(collisionOn == false) {
                 switch(direction) {
                     case "up":
-                        worldY -= speed;
+                        //worldY -= speed;
+                        worldY -= 10;
                         break;
                     case "down":
-                        worldY += speed;
+                        //worldY += speed;
+                        worldY += speedY;
                         break;
                     case "left":
-                        worldX -= speed;
+                        //worldX -= speed;
+                        worldX -= speedX;
                         break;
                     case "right":
-                        worldX += speed;
+                        //worldX += speed;
+                        worldX += speedX;
                         break;
                 }
             }

@@ -93,13 +93,13 @@ public class TileManager {
             int tileNum = mapTileNum[worldCol][worldRow];
             int worldX = worldCol * gp.tileSize;
             int worldY = worldRow * gp.tileSize;
-            int screenX = worldX - gp.player.worldX + gp.player.screenX;
-            int screenY = worldY - gp.player.worldY + gp.player.screenY;
+            int screenX = worldX - gp.player.worldX + gp.player.screenX; //- +
+            int screenY = worldY - gp.player.worldY + gp.player.screenY; //- +
 
             if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX
-                    && worldX - gp.tileSize < gp.player.worldX + gp.player.screenX
-                    && worldY + gp.tileSize > gp.player.worldY - gp.player.screenY
-                    && worldY - gp.tileSize < gp.player.worldY + gp.player.screenY)
+                    && worldX - gp.tileSize < gp.player.worldX + gp.player.screenX //- +
+                    && worldY + gp.tileSize > gp.player.worldY - gp.player.screenY //+ -
+                    && worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) // - +
 
             g2D.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
             worldCol++;
@@ -116,15 +116,6 @@ public class TileManager {
 
 
 
-
-        //int screenCenterX = gp.getWidth()/2- gp.tileSize/2;
-        //int screenCenterY = gp.getHeight()/2-gp.tileSize/2;
-
-        //g2D.drawImage(tile[0].image,screenCenterX,screenCenterY,gp.tileSize, gp.tileSize,null);
-        //g2D.drawImage(tile[1].image,screenCenterX- gp.tileSize,screenCenterY,gp.tileSize, gp.tileSize,null);
-        //g2D.drawImage(tile[2].image,screenCenterX + gp.tileSize,screenCenterY,gp.tileSize, gp.tileSize,null);
-        //for (int i = 0; i < gp.getWidth(); i = i+ gp.tileSize) {
-        //    g2D.drawImage(tile[3].image,i,gp.getHeight()-30,gp.tileSize,gp.tileSize,null);
 
         }
 
