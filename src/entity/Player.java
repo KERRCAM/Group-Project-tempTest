@@ -36,6 +36,7 @@ public class Player extends Entity{
 
         worldX = gp.tileSize * 23;
         worldY = gp.tileSize * 21;
+        speed = 4;
         speedY = 4;
         speedX = 4;
         airTime = 0;
@@ -73,28 +74,50 @@ public class Player extends Entity{
         }
     }
     public void update(){
-        worldY += speedY*timeFalling();
+        //worldY += speedY*timeFalling();
         if(keyH.up == true || keyH.down == true || keyH.left == true || keyH.right == true){
             if(keyH.up){
                 direction = "up";
                 lastDirection="up";
+
                 worldY -= 10;
             }else if (keyH.down){
                 direction = "down";
                 lastDirection="down";
+
                 worldY += speedY;
             }else if(keyH.left){
                 direction = "left";
                 lastDirection="left";
+
                 worldX -= speedX;
             }else if (keyH.right){
                 direction = "right";
                 lastDirection="right";
+
                 worldX += speedX;
             }
 
+            //check collision
             collisionOn = false;
             gp.cTest.checkTile(this);
+            //if false player can move if true player cant move
+            if(collisionOn == false) {
+                switch(direction) {
+                    case "up":
+                        worldY -= speed;
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
+                }
+            }
 
             spriteCounter++;
             if(spriteCounter > 10){

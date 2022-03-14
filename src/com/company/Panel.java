@@ -8,15 +8,16 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Panel extends JPanel implements Runnable{
+    final int originalTileSize = 16;
     final int characterSize = 16;
     final int characterScaling = 3;
     public final int tileSize = characterSize*characterScaling;
-    final int maxScreenCol = 50;
-    final int maxScreenRow = 50;
+    final int maxScreenCol = 30; // how big actual window is
+    final int maxScreenRow = 30;
     final int screenWidth = maxScreenCol * tileSize;
     final int screenHeight = maxScreenRow * tileSize;
 
-    public final int maxWorldCol = 50;
+    public final int maxWorldCol = 50; // how big map is
     public final int maxWorldRow = 50;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
