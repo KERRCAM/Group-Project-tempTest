@@ -24,10 +24,10 @@ public class Player extends Entity{
         screenY = gp.worldHeight/2;
 
         solidArea = new Rectangle(8, 16, 32, 32);
-        //solidArea.x = 0;
-        //solidArea.y = 0;
-        //solidArea.width = 48;
-        //solidArea.height = 48; // values for collision of entire sprite box
+        solidArea.x = 0;
+        solidArea.y = 0;
+        solidArea.width = 48;
+        solidArea.height = 48; // values for collision of entire sprite box
 
         setDefaultValues();
         getPlayerImage();
@@ -78,24 +78,24 @@ public class Player extends Entity{
         if(keyH.up == true || keyH.down == true || keyH.left == true || keyH.right == true){
             if(keyH.up){
                 direction = "up";
-                lastDirection="up";
+                //lastDirection="up";
 
-                worldY -= 10;
+                //worldY -= 10;
             }else if (keyH.down){
                 direction = "down";
-                lastDirection="down";
+                //lastDirection="down";
 
-                worldY += speedY;
+                //worldY += speedY;
             }else if(keyH.left){
                 direction = "left";
-                lastDirection="left";
+                //lastDirection="left";
 
-                worldX -= speedX;
+                //worldX -= speedX;
             }else if (keyH.right){
                 direction = "right";
-                lastDirection="right";
+                //lastDirection="right";
 
-                worldX += speedX;
+                //worldX += speedX;
             }
 
             //check collision

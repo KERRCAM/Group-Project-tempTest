@@ -44,7 +44,7 @@ public class TileManager {
 
             tile[4] = new Tile();
             tile[4].image = ImageIO.read(getClass().getResourceAsStream("/TerrainTiles/sky2.png"));
-            tile[4].collision = true;
+            tile[4].collision = false;
 
 
 
