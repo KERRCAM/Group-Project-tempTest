@@ -20,8 +20,8 @@ public class Player extends Entity{
         this.gp = gp;
         this.keyH = keyH;
 
-        screenX = gp.worldWidth/4;
-        screenY = gp.worldHeight/4;
+        screenX = 570;
+        screenY = 400;
 
         solidArea = new Rectangle(8, 16, 32, 32);
         solidArea.x = 0;

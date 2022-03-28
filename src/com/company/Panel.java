@@ -17,8 +17,8 @@ public class Panel extends JPanel implements Runnable{
     final int screenWidth = maxScreenCol * tileSize;
     final int screenHeight = maxScreenRow * tileSize;
 
-    public final int maxWorldCol = 50; // how big map is
-    public final int maxWorldRow = 50;
+    public final int maxWorldCol = 24; // how big map is
+    public final int maxWorldRow = 200;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
 
